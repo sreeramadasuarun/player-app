@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import Moviesdata from './Moviesdata'
-import Player from "../player/Player"
+// import Player from "../player/Player"
 
 const Movieslist = () => {
 
@@ -19,7 +19,7 @@ const Movieslist = () => {
             <div className='back'></div>
 
             <h3>{movielistdata.title}</h3>
-            <Player />
+            {/* <Player /> */}
             <br />
             <h3>{movielistdata.description}</h3>
 
