@@ -49,15 +49,13 @@ const App = () => {
 
         <Route path="*" element={<Notfound />} />
 
-        <Route path="/users" element={<PrivateRoute>
-          <Users />
-        </PrivateRoute>} />
+        <Route path="/users" element={<Users />} />
 
         <Route path="/users/:userid" element={<Userdetails />} />
 
-        <Route path="/Movies" element={<Movies />} />
+        <Route path="/Movies" element={<PrivateRoute><Movies /></PrivateRoute>} />
 
-        <Route path="/Movies/:Movieid" element={<Movieslist />} />
+        <Route path="/Movies/:Movieid" element={<PrivateRoute><Movieslist /></PrivateRoute>} />
 
         <Route path="/Drinks" element={<Drinks />} />
 

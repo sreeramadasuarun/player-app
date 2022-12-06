@@ -25,7 +25,7 @@ const Login = () => {
             />
             <button onClick={() => {
                 login(name);
-                navigate("/", { replace: true })
+                navigate("/Movies", { replace: true })
             }}>Login</button>
         </React.Fragment>
     )
