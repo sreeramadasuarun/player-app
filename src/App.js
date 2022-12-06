@@ -1,131 +1,79 @@
-import "./App.css";
-import React from "react";
-import backward from "./assets/backward.png"
-import play from "./assets/play.png"
-import forward from "./assets/forward.png"
-import pause from "./assets/pause.svg"
-import { useState, useRef } from "react";
-import KGF from "./assets/KGF4.mp4"
+import React from 'react'
+import { Routes, Route } from "react-router-dom"
+import Contact from './Componets/Contact';
+import Home from './Componets/Home';
+// import About from './Componets/About';
+import NavLink from "./Componets/Navlinks"
+import Success from './Componets/Success';
+import Notfound from './Componets/404error';
+import Projects from './Componets/projects';
+import Featuredproject from './Componets/featured-project';
+import Presentprojects from './Componets/present-projects';
+import Users from './Componets/users';
+import Userdetails from './Componets/Userdetails';
+import Movieslist from "./Componets/Movies/Movieslist";
+import Movies from './Componets/Movies/Movies';
+import Drinks from './Componets/Drinksapi/Drinks';
+import Drinkslist from './Componets/Drinksapi/Drinkslist';
+import Person from './Componets/practise/Person';
+import Persondetails from './Componets/practise/Persondetails';
+import Login from './login/Login';
+import Logout from './login/Logout';
+import { Authprovider } from './login/auth';
+import PrivateRoute from "./login/PrivateRoute"
 
 
-function App() {
-
-
-
-  const videoRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
-  const [videoTime, setVideoTime] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-
-
-  const videoHandler = (control) => {
-    if (control === "play") {
-      videoRef.current.play();
-      setPlaying(true);
-    } else if (control === "pause") {
-      videoRef.current.pause();
-      setPlaying(false);
-    }
-
-
-    if (control === "play") {
-      videoRef.current.play();
-      setPlaying(true);
-      var vid = document.getElementById("video1");
-      setVideoTime(vid.duration);
-    }
-
-  };
+const Lazyabout = React.lazy(() => import("./Componets/About"))
 
 
 
-  const fastForward = () => {
-    videoRef.current.currentTime += 5;
-  };
-
-  const revert = () => {
-    videoRef.current.currentTime -= 5;
-  };
-
-
-  window.setInterval(function () {
-    setCurrentTime(videoRef.current?.currentTime);
-    setProgress((videoRef.current?.currentTime / videoTime) * 100);
-  }, 1000);
-
-
-
+const App = () => {
 
   return (
+    <Authprovider>
+      <NavLink />
+      <br />
 
 
-    <div className="app" style={{ position: "initial", width: "50%", height: "50%" }}>
+      <Routes>
 
-      <video
-        id="video1"
-        ref={videoRef}
-        className="movie"
-        src={KGF}>
+        <Route path='/' element={<Home />} />
+        <Route path='/Contact' element={<Contact />} />
+        <Route path='/About' element={<React.Suspense fallback="Loading...."><Lazyabout /></React.Suspense>} />
+        <Route path="/Success" element={<Success />} />
 
-      </video>
+        <Route path="/Projects" element={<Projects />}>
+          <Route path="Featuredproject" element={<Featuredproject />} />
+          <Route path="Presentprojects" element={<Presentprojects />} />
+        </Route >
 
-      <div className="controlsContainer">
-        <div className="controls">
+        <Route path="*" element={<Notfound />} />
 
+        <Route path="/users" element={<PrivateRoute>
+          <Users />
+        </PrivateRoute>} />
 
+        <Route path="/users/:userid" element={<Userdetails />} />
 
-          <img onClick={revert} className="controlsIcon" alt="" src={backward} />
+        <Route path="/Movies" element={<Movies />} />
 
+        <Route path="/Movies/:Movieid" element={<Movieslist />} />
 
-          {playing ? (
-            <img
-              onClick={() => videoHandler("pause")}
-              className="controlsIcon--small"
-              alt=""
-              src={pause}
-            />
-          ) : (
-            <img
-              onClick={() => videoHandler("play")}
-              className="controlsIcon--small"
-              alt=""
-              src={play}
-            />
-          )}
+        <Route path="/Drinks" element={<Drinks />} />
 
+        <Route path="/Drinks/:tailid" element={<Drinkslist />} />
 
+        <Route path="/Person" element={<Person />} />
 
-          <img onClick={fastForward} className="controlsIcon" alt="" src={forward} />
+        <Route path="/Person/:personid" element={<Persondetails />} />
 
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Logout" element={<Logout />} />
+      </Routes >
 
-        </div>
-      </div>
-
-
-      <div className="timecontrols">
-        <p className="controlsTime">
-          {Math.floor(videoTime / 60) + ":" + ("0" + Math.floor(videoTime % 60)).slice(-2)}
-
-        </p>
-
-        <div className="time_progressbarContainer">
-          <div
-            style={{ width: `${progress}%` }}
-            className="time_progressBar"
-          ></div>
-        </div>
-
-
-        <p className="controlsTime">
-          {Math.floor(currentTime / 60) + ":" + ("0" + Math.floor(currentTime % 60)).slice(-2)}
-
-        </p>
-      </div>
-
-    </div>
+    </Authprovider >
   )
 }
+
 
 export default App;
