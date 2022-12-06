@@ -28,7 +28,7 @@ const Persondetails = () => {
 
     const { personid } = useParams()
 
-    const persondata = user.find((each) => each.id == personid)
+    const persondata = user.find((each) => each.id === personid)
 
 
 
