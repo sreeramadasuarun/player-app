@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useRef } from "react";
 
 
-import backward from "C:/Users/Arun Sreeramadasu/Desktop/player/src/assets/backward.png"
+import backward from "C:/Users/Arun Sreeramadasu/Desktop/player/src/assets/backward.svg"
 import play from "C:/Users/Arun Sreeramadasu/Desktop/player/src/assets/play.png"
 import forward from "C:/Users/Arun Sreeramadasu/Desktop/player/src/assets/forward.png"
 import pause from "C:/Users/Arun Sreeramadasu/Desktop/player/src/assets/pause.svg"
