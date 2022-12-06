@@ -1,29 +1,29 @@
-// import React from 'react'
-// import { useState, useRef, useEffect } from 'react'
+import React from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 
-// const Final = () => {
+const UseRef = () => {
 
-//     const [firstname, setfirstname] = useState("")
+    const [firstname, setfirstname] = useState("")
 
-//     const inputdom = useRef("")
+    const inputdom = useRef("")
 
 
-//     const focus = () => {
-//         inputdom.current.focus()
-//     }
+    const focus = () => {
+        inputdom.current.focus()
+    }
 
-//     return (
-//         <>
-//             <input
-//                 ref={inputdom}
-//                 type="text" name="firstname" id='firstname' onChange={(e) => setfirstname(e.target.value)} />
+    return (
+        <>
+            <input
+                ref={inputdom}
+                type="text" name="firstname" id='firstname' onChange={(e) => setfirstname(e.target.value)} />
 
-//             <h4>typing:{firstname}</h4>
-//             <button onClick={focus}>focus</button>
+            <h4>typing:{firstname}</h4>
+            <button onClick={focus}>focus</button>
 
-//         </>
-//     )
-// }
+        </>
+    )
+}
 
-// export default Final
+export default UseRef

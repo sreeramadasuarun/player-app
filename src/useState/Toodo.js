@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Index = () => {
+const Todoo = () => {
 
     const [message, setmessage] = useState({
         text: "",
@@ -147,4 +147,4 @@ const Index = () => {
 }
 
 
-export default Index;
+export default Todoo;

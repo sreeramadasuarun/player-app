@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Index = () => {
+const Message = () => {
 
 
 
@@ -139,4 +139,4 @@ const Index = () => {
 
     )
 }
-export default Index;
+export default Message;

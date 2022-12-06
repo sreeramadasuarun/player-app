@@ -6,7 +6,7 @@ import Count from "./count"
 
 
 
-const Final = () => {
+const Usecallback = () => {
 
     const [age, setage] = useState(0)
     const [salary, setsalary] = useState(5000)
@@ -32,4 +32,4 @@ const Final = () => {
     )
 }
 
-export default Final
+export default Usecallback
