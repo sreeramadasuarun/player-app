@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import KFG from "../assets/KGF4.mp4"
+import KFG from "../assets/KGF.mp4"
 
 
 const Home = () => {
